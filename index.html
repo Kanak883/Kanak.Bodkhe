@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,12 +14,32 @@
         .content {
             margin-top: 20%;
         }
+        .visitor-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
+    <div class="visitor-count" id="visitorCount">Visited by: 0</div>
     <div class="content">
         <h1>Thanks for visiting, I'll be adding stuff soon :)</h1>
         <h2>Kanak Bodkhe 😊</h2>
     </div>
+    <script>
+        // Retrieve visitor count from localStorage or initialize it to 0
+        let visitorCount = localStorage.getItem('visitorCount');
+        if (!visitorCount) {
+            visitorCount = 0;
+            localStorage.setItem('visitorCount', visitorCount);
+        }
+
+        // Increment visitor count and update display
+        visitorCount++;
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitorCount').textContent = `Visited by: ${visitorCount}`;
+    </script>
 </body>
 </html>
